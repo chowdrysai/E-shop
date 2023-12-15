@@ -1,4 +1,4 @@
-import product from "../product/[productid]/page";
+import product from "../product/[productId]/page";
 
 interface HeadingProps{
     title:string,

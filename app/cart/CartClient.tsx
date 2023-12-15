@@ -5,9 +5,10 @@ import { MdArrowBack } from "react-icons/md";
 import Heading from "../components/Heading";
 import Button from "../components/Button";
 import ItemContent from "./itemContent";
+import { FormatPrice } from "@/utils/formatPrice";
 
 const CartClient = () => {
-    const { cartProducts } = useCart();
+    const { cartProducts, handleClearCart,cartTotalAmount } = useCart();
     if (!cartProducts || cartProducts.length === 0) {
         return (
             <div className="flex flex-col items-center ">
@@ -40,15 +41,15 @@ const CartClient = () => {
             </div>
             <div className="border-t-[1.5px] border-slate-200 py-4 flex justify-between gap-4">
                 <div className="w-[100px]">
-                    <Button label="Clear Cart" onClick={() => { }} small outline />
+                    <Button label="Clear Cart" onClick={() => handleClearCart()} small outline />
                 </div>
                 <div className="text-sm flex flex-col gap-1 items-start">
                     <div className="flex justify-between w-full text-base font-semibold">
                         <span>SubTotal</span>
-                        <span>$999</span>
+                        <span>{FormatPrice(cartTotalAmount)}</span>
                     </div>
                     <p className="text-slate-500">Taxes and shipping calculate at checkout</p>
-                    <Button label="Checkout" onClick={() => { }}/>
+                    <Button label="Checkout" onClick={() =>{} }/>
                     <Link href={'/'} className=" text-slate-500 flex items-center gap-1">
                         <MdArrowBack />
                         <span>Continue Shopping</span>

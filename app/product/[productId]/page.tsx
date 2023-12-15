@@ -1,24 +1,24 @@
 import Container from "@/app/components/Container";
 import ProductDetails from "./productDetails";
-import { products } from "@/utils/product";
 import ListRating from "./ListRating";
+import { products } from "@/utils/products";
 
 interface IParams{
-    product?:string
+    productId?:string
 }
 const product = ({params}:{params:IParams}) => {
-    // console.log("params",params);
+    const product=products.find((item)=>item.id===params.productId)
+    // console.log("product",product);
     return (  
         <div className="p-8">
             <Container>
-                <ProductDetails product={products}/>
+                <ProductDetails product={product}/>
                 <div className="flex flex-col gap-4 mt-20">
                     <div>Add rating</div>
-                    <ListRating product={products}/>
+                    <ListRating product={product}/>
                 </div>
             </Container>
         </div>
      );
 }
- 
 export default product;
