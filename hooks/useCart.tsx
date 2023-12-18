@@ -22,9 +22,6 @@ export const CartContextProvider = (props: Props)=>{
     const [cartProducts,setCartProducts]=useState<CartProductType[] | null>(null)
     const [cartTotalQty,setCartTotalQty]=useState(0)
     const [cartTotalAmount,setCartTotalAmount]=useState(0)
-
-    console.log('qty',cartTotalQty)
-    console.log('amount',cartTotalAmount)
     useEffect(()=>{
         const cartItems=localStorage.getItem("E-shopCartItem");
         const cartProducts: CartProductType[] | null = cartItems ? JSON.parse(cartItems) : null
@@ -35,7 +32,6 @@ export const CartContextProvider = (props: Props)=>{
     useEffect(()=>{
 
         const getTotals=()=>{   
-            console.log("sai") 
         if(cartProducts){
             const {total,qty} = cartProducts?.reduce((acc,item)=>{
                 const itemTotal=item.price * item.quantity
